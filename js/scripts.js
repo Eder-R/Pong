@@ -23,7 +23,7 @@ var esquerda = {
 	altura: 100,
 	largura: 10,
 	score:0,
-	speed:5
+	speed:3
 };
 // Barra da Direita
 var direita = {
@@ -32,11 +32,14 @@ var direita = {
 	altura: 100,
 	largura: 10,
 	score:0,
-	speed:5
+	speed:3
 };
 //Registrando o aperto das teclas
 document.addEventListener("keydown", function (e) {
 	teclas[e.keyCode] = true;
+	if(e.keyCode == 80){
+		alert("Jogo Pausado!");
+	}
 	//alert(e.keyCode)
 }, false);
 //Registrando o aperto das teclas
@@ -99,6 +102,14 @@ function newGame(winner) {
 		bola.y = canvas.height / 2 - bola.altura / 2;
 		bola.x = canvas.width /2 - bola.largura /2;
 		bola.mod = 0;
+
+		if(esquerda.score == 5){
+			alert("O vencedor foi: Esquerda por: "+esquerda.score+" x "+direita.score);
+			document.location.reload();
+		}else if(direita.score == 5){
+			alert("O vencedor foi: Direita por: "+direita.score+" x "+esquerda.score);
+			document.location.reload();
+		}
 
 };
 
